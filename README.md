@@ -12,7 +12,7 @@ pip install transformers==4.45.2 accelerate datasets SentencePiece protobuf
 If you are only interested in our work, you can still use the latest Transformers library.
 
 ### Training
-Before training, you need to pre-generate an initial mask. While random initialization is feasible, it often results in longer training cycles. Using a pre-initialized mask can help accelerate the training process. We recommend using [SparseGPT](https://github.com/IST-DASLab/sparsegpt.git) to generate a sparse model, and then running our `get_mask.py` script to extract and save the corresponding masks.
+Before training, you need to pre-generate an initial mask. While random initialization is feasible, it often results in longer training cycles. Using a pre-initialized mask can help accelerate the training process. We recommend using [SparseGPT](https://github.com/IST-DASLab/sparsegpt.git)/[Wanda](https://github.com/locuslab/wanda.git) to generate a sparse model, and then running our `get_mask.py` script to extract and save the corresponding masks.
 
 Our proposed refined PGE incorporates the loss values of the initial mask across different minibatches. These values can be computed during training by performing two forward passes with alternating masks. As a more convenient alternative, you can directly precompute and store the initial loss values:
 ```
