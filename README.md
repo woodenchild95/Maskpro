@@ -1,1 +1,35 @@
-# Maskpro
+# MaskPro：Linear-Space Probabilistic Learning for (N:M)-Sparsity 
+
+## Usage
+
+We implement (N:M)-sparsity mask learning for large language models with [PyTorch](https://pytorch.org/). To ensure a fair comparison with prior approaches, we recommend adopting the following setup for side-by-side evaluation.
+
+### Installation
+```
+git clone https://github.com/woodenchild95/Maskpro.git
+pip install transformers==4.45.2 accelerate datasets SentencePiece protobuf
+```
+If you are only interested in our work without comparing it to previous studies, you can still use the latest Transformers library.
+
+### Training
+We provide a demo for learning (2:4) mask for LLaMA2-7B with 512 data samples.
+
+Before training, you need to pre-generate an initial mask. While random initialization is feasible, it often results in longer training cycles. Using a pre-initialized mask can help accelerate the training process. We recommend using [SparseGPT](https://github.com/IST-DASLab/sparsegpt.git) to generate a sparse model, and then running our `get_mask.py` script to extract and save the corresponding masks.
+
+Our proposed refined PGE incorporates the loss values of the initial mask across different minibatches. These values can be computed during training by performing two forward passes with alternating masks. As a more convenient alternative, you can directly precompute and store the initial loss values:
+```
+python inference_loss.py --dataset_size 512 --batchsize 32
+```
+Then you can train masks for about 10,000 iterations:
+```
+python train.py --dataset_size 512 --batchsize 32 --lr 50 --logits 10 --epoch 625
+```
+
+## Note
+We have tested the method on both A100 and H100 GPUs. While A100 yields slightly lower performance compared to H100, likely due to precision differences at the hardware level, this effect is mostly noticeable for models larger than 7B. For such large models, we recommend using H100 or higher-end GPUs. For smaller models, the hardware difference has minimal impact.
+
+## ToDo
+- [ ] Release the code
+
+## Citation
+
