@@ -31,4 +31,11 @@ We have tested the method on both A100 and H100 GPUs. While A100 yields slightly
 - [ ] update pge files
 
 ## Citation
-
+```
+@article{sun2025maskpro,
+  title={MaskPro: Linear-Space Probabilistic Learning for Strict (N: M)-Sparsity on Large Language Models},
+  author={Sun, Yan and Zhang, Qixin and Yu, Zhiyuan and Zhang, Xikun and Shen, Li and Tao, Dacheng},
+  journal={arXiv preprint arXiv:2506.12876},
+  year={2025}
+}
+```
