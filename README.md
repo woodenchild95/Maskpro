@@ -27,7 +27,8 @@ You may freely adjust the dataset size and the batchsize. Please ensure that the
 We have tested the method on both A100 and H100 GPUs. While A100 yields slightly lower performance compared to H100, likely due to precision differences at the hardware level, this effect is mostly noticeable for models larger than 7B. For such large models, we recommend using H100 or higher-end GPUs. For smaller models, the hardware difference has minimal impact.
 
 ## ToDo
-- [ ] Release the code
+- [ ] compress mask
+- [ ] update pge files
 
 ## Citation
 
