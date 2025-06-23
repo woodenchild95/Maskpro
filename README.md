@@ -9,7 +9,6 @@ We implement the mask learning for large language models with [PyTorch](https://
 git clone https://github.com/woodenchild95/Maskpro.git
 pip install transformers==4.45.2 accelerate datasets SentencePiece protobuf
 ```
-If you are only interested in our work, you can still use the latest Transformers library.
 
 ### Training
 Before training, you need to pre-generate an initial mask. While random initialization is feasible, it often results in longer training cycles. Using a pre-initialized mask can help accelerate the training process. We recommend using [SparseGPT](https://github.com/IST-DASLab/sparsegpt.git)/[Wanda](https://github.com/locuslab/wanda.git) to generate a sparse model, and then running our `get_mask.py` script to extract and save the corresponding masks.
